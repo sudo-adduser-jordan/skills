@@ -1,0 +1,33 @@
+version: '3'
+
+vars:
+  SKILLS_CLI: skills@1.7.0
+  SKILLS_DIR: .agents/skills
+  BORISTANE_REPO: https://github.com/boristane/agent-skills
+  BROWSER_REPO: https://github.com/vercel-labs/agent-browser
+
+tasks:
+  default:
+    desc: List available tasks
+    cmds:
+      - task --list
+
+  vendor:
+    desc: Install skills into .agents via skills CLI + screen for hidden text
+    cmds:
+      - npx -y {{.SKILLS_CLI}} add {{.BORISTANE_REPO}} --skill logging-best-practices -y
+      - npx -y {{.SKILLS_CLI}} add {{.BROWSER_REPO}} --skill agent-browser -y
+      - python3 scripts/screen_hidden_text.py {{.SKILLS_DIR}}
+
+  vendor:check:
+    desc: Verify installed skill set matches expected + screen for hidden text
+    cmds:
+      - |
+        npx -y {{.SKILLS_CLI}} list --json | python3 -c "import json,sys; got={s['name'] for s in json.load(sys.stdin)}; want={'agent-browser','logging-best-practices'}; sys.exit('drift, installed=%s wanted=%s' % (sorted(got), sorted(want))) if got != want else print('skills in sync: %s' % sorted(got))"
+      - python3 scripts/screen_hidden_text.py {{.SKILLS_DIR}}
+
+  vendor:update:
+    desc: Update all project skills to latest (refreshes skills-lock.json) + screen
+    cmds:
+      - npx -y {{.SKILLS_CLI}} update -p -y
+      - python3 scripts/screen_hidden_text.py {{.SKILLS_DIR}}
