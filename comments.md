@@ -1,0 +1,4 @@
+- no comments allowed in codebase
+- do not create comments
+- comments are allowed in the projects current markdown files
+- comments should be stored in the projects markdown files as documenation

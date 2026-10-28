@@ -1,0 +1,2 @@
+- always use ask feature
+- never present the user options without using the ask feature
