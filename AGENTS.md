@@ -1,5 +1,8 @@
 # User Generated
 
+## Tools
+- never use sleep
+
 ## Ask
 
 - Always use the ask feature when presenting options, choices, or decisions to the user.
@@ -36,5 +39,23 @@ Reference: https://taskfile.dev/docs/reference/schema
   - `start`
   - `stop`
   - `dev`
+
+- add colored logging
+- [command] content
+
+## Commits
+
+- never write descriptions
+- use user defined commit message format
+- `tag: statement of change`
+```sh
+add: 
+update: 
+remove: 
+move: 
+feature:
+fix:
+```
+- if a tag does not exist in the above list, suggest one
 
 # End User Generated
