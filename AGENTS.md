@@ -57,5 +57,6 @@ feature:
 fix:
 ```
 - if a tag does not exist in the above list, suggest one
+- never create a new branch unless asked
 
 # End User Generated
