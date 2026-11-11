@@ -57,6 +57,9 @@ feature:
 fix:
 ```
 - if a tag does not exist in the above list, suggest one
+
+- always commit to current branch
 - never create a new branch unless asked
+- do not push
 
 # End User Generated
